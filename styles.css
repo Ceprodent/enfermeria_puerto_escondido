@@ -1,0 +1,294 @@
+body {
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.justificado {
+  text-align: justify;
+}
+
+header {
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container {
+    flex: 1; /* Allow the container to take up available space */
+}
+
+.header-title {
+   font-size: 1.5em; /* Adjust as needed */
+    margin-left: 20px;
+    color: #333;
+}
+
+.logo {
+    max-height: 40px;
+    margin-left: auto;
+    transition: transform 0.5s ease;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.logo:hover {
+    animation: rotate 4s linear infinite;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #f4f4f4;
+    width: 250px;
+    height: 100vh;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
+    position: fixed;
+    left: 0;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-250px);
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-link {
+    display: block;
+    padding: 10px 15px;
+    background-color: #e0e0e0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.menu-link i {
+    margin-right: 5px;
+}
+
+.menu-link:hover {
+    background-color: #d0d0d0;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-toggle::after {
+   content: '\25BC'; /* Unicode character for a down-pointing triangle */
+    margin-left: 5px;
+}
+
+.cronograma-img {
+    max-width: 100%; /* This will make sure that the image doesn't go beyond its container*/
+    display: block; /*Remove default inline behaviour*/
+    margin: 10px auto; /* This centers the image horizontally and give it some space */
+    border-radius: 5px;
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    padding: 20px;
+    padding-top: 80px; /* Para evitar que el contenido se superponga con el header */
+    margin-left: 250px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.content.collapsed {
+    margin-left: 0;
+}
+
+/* Introduction */
+.introduction {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.introduction h1 {
+    color: #333;
+}
+
+.introduction p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Tabs */
+.tabs {
+    text-align: center;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-image {
+    max-width: 400px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.download-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.download-link i {
+   margin-right: 5px;
+}
+
+.download-link:hover {
+    background-color: #f0f0f0;
+}
+
+.download-link p {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 0.9em;
+    color: #777;
+}
+
+
+/* Toggle Button */
+.toggle-menu {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 101;
+    display: none;
+}
+
+/* Media Query para hacer el sidebar plegable */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-250px);
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .content.collapsed {
+        margin-left: 0;
+    }
+
+    .toggle-menu {
+        display: block;
+    }
+
+    .tab-image{
+        max-width: 100%;
+    }
+
+    .download-link p {
+        font-size: 0.9em;
+    }
+
+    .dropdown-content {
+        min-width: 100%;
+    }
+    
+    .header-title {
+       font-size: 1.2em;
+       margin-left: 10px;
+    }
+
+}
+
+/* Responsive para móviles pequeños */
+@media (max-width: 480px) {
+    .download-link p {
+        font-size: 0.8em;
+    }
+
+    .description {
+        font-size: 0.8em;
+    }
+    
+      .header-title {
+       font-size: 1em;
+       margin-left: 5px;
+    }
+}
